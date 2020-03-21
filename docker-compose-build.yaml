@@ -15,7 +15,7 @@ services:
   frontend:
     build:
       context: udacity-c3-frontend  
-    image: char2pie/udacity-frontend
+    image: char2pie/udacity-frontend:local
 # Run docker-compose-build.yaml to build all four Docker images
 # context tells where to find the Dockerfiles
 # Don't run if these images are already built.  Building all four takes a long time.

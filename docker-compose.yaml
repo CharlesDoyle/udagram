@@ -1,0 +1,49 @@
+version: "3"
+services:
+  reverseproxy:
+      image: char2pie/reverseproxy
+      ports:
+          - 8080:8080
+      restart: always
+      depends_on:
+        - backend-user
+        - backend-feed     
+  backend-user:
+    image: char2pie/udacity-restapi-user
+    volumes:
+      - $HOME/.aws:/root/.aws
+    environment:
+      POSTGRESS_USERNAME: $POSTGRESS_USERNAME
+      POSTGRESS_PASSWORD: $POSTGRESS_PASSWORD 
+      POSTGRESS_DB: $POSTGRESS_DB 
+      POSTGRESS_HOST: $POSTGRESS_HOST 
+      AWS_REGION: $AWS_REGION 
+      AWS_PROFILE: $AWS_PROFILE 
+      AWS_BUCKET: $AWS_BUCKET
+      JWT_SECRET: $JWT_SECRET
+      URL: "http://localhost:8100"
+  backend-feed:
+    image: char2pie/udacity-restapi-feed
+    volumes:
+      - $HOME/.aws:/root/.aws
+    environment:
+      POSTGRESS_USERNAME: $POSTGRESS_USERNAME
+      POSTGRESS_PASSWORD: $POSTGRESS_PASSWORD 
+      POSTGRESS_DB: $POSTGRESS_DB 
+      POSTGRESS_HOST: $POSTGRESS_HOST 
+      AWS_REGION: $AWS_REGION 
+      AWS_PROFILE: $AWS_PROFILE 
+      AWS_BUCKET: $AWS_BUCKET
+      JWT_SECRET: $JWT_SECRET
+      URL: "http://localhost:8100"
+  frontend:
+    image: char2pie/udacity-frontend:local
+    ports:
+      - "8100:80"
+# docker-compose.yaml is run to start up the four containers of the 
+# udagram app, from the images that have been built.  Each container 
+# is a 'service' with the names given in this file.  
+# volumes are directories added to the container's filesystem.
+# $HOME/.aws:/root/.aws  
+#   * (this adds the $HOME/.aws file to /root/.aws in the container)
+# To start the app: $ docker-compose up
