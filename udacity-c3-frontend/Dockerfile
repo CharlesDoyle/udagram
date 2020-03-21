@@ -22,7 +22,7 @@ RUN ionic build
 # a Linux image
 FROM nginx:alpine
 
-# copy /usr/src/app/www from the base image 'ionic' to the new directory /usr/share/nginx/html
+# copy /usr/src/app/www from the base image 'ionic' to container directory /usr/share/nginx/html
 COPY --from=ionic /usr/src/app/www /usr/share/nginx/html
 
 # to build this image:

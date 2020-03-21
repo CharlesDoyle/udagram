@@ -3,7 +3,7 @@ services:
   reverseproxy:
       image: char2pie/reverseproxy
       ports:
-          - 8080:8080
+          - 8080:8080  # host:container (host is publicly exposed)
       restart: always
       depends_on:
         - backend-user
@@ -21,7 +21,7 @@ services:
       AWS_PROFILE: $AWS_PROFILE 
       AWS_BUCKET: $AWS_BUCKET
       JWT_SECRET: $JWT_SECRET
-      URL: "http://localhost:8100"
+      URL: "http://localhost:8100"  #  the url of the frontend
   backend-feed:
     image: char2pie/udacity-restapi-feed
     volumes:
@@ -37,9 +37,9 @@ services:
       JWT_SECRET: $JWT_SECRET
       URL: "http://localhost:8100"
   frontend:
-    image: char2pie/udacity-frontend:local
+    image: char2pie/udacity-frontend
     ports:
-      - "8100:80"
+      - "8100:80"  # set the internal container port to 80, public host port 8100
 # docker-compose.yaml is run to start up the four containers of the 
 # udagram app, from the images that have been built.  Each container 
 # is a 'service' with the names given in this file.  
