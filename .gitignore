@@ -1,5 +1,8 @@
 
 udacity-frontend/node_modules
 udacity-restapi-backend/node_modules
-
+udacity-c3-restapi-feed/node_modules
+udacity-c3-restapi-user/node_modules
+udacity-c3-restapi-feed/package-lock.json
+udacity-c3-restapi-user/package-lock.json
 

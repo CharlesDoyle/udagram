@@ -1,0 +1,22 @@
+version: "3"
+services:
+  reverseproxy:
+    build:
+      context: reverseproxy
+    image: char2pie/reverseproxy 
+  backend_user:
+    build:
+      context: udacity-c3-restapi-user
+    image: char2pie/udacity-restapi-user
+  backend_feed:
+    build:
+      context: udacity-c3-restapi-feed  
+    image: char2pie/udacity-restapi-feed
+  frontend:
+    build:
+      context: udacity-c3-frontend  
+    image: char2pie/udacity-frontend
+# Run docker-compose-build.yaml to build all four Docker images
+# context tells where to find the Dockerfiles
+# Don't run if these images are already built.  Building all four takes a long time.
+# $ docker-compose -f docker-compose-build.yaml build --parallel
