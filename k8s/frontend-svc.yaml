@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Service
+metadata: 
+  name: frontend  # service/frontend becomes the DNS of this service
+  labels:
+    service: frontend
+spec:
+  selector:
+    service: frontend  # the pod labels that this service will serve
+  ports:
+    - name: "8100"
+      port: 8100    # the service port inside the node (not exposed)
+      targetPort: 80  # the containerPort on the frontend pod, as defined in frontend-deployment.yaml
+# This defines a ClusterIP service (because ClusterIP is the default service; 
+# I don't have to indicate a service type)
+# This service gives the frontend deployment a ClusterIP service where service/frontend is the DNS
+# which renders into an IP address that can be accessed withing the cluster. 
+# ClusterIP services do not have publicly-exposed IPs, they are inside the worker node.
+# To expose an IP address to the public, do 'port-forward service/frontend 8100:8100'
+# The port-forward will result in: frontend 8100 -> 80 (a public 8100 port that goes 
+# through the 8100 service to the 80 frontend containerPort; the result is the 80 containerPort is 
+# publicly exposed at localhost:8100)

@@ -28,7 +28,3 @@ spec:
         ports:
         - containerPort: 8080
       restartPolicy: Always
-<<<<<<< HEAD
-
-=======
->>>>>>> parent of baad810... Deploy Udagram app as a Kubernetes cluster

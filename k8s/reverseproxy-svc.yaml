@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Service
+metadata: 
+  name: reverseproxy
+  labels:
+    service: reverseproxy  # service/reverseproxy is the DNS with a ClusterIP address
+spec:
+  selector:
+    service: reverseproxy
+  type: ClusterIP
+  ports:
+  - name: "8080"
+    port: 8080        # the reverseproxy service port inside the node
+    targetPort: 8080  # the target containerPort of the reverseproxy pod
+# A ClusterIP service for any reverseproxy deployment tagged with labels.service.reverseproxy
+# This service/reverseproxy creates one IP:8080 pod address for any replicaSet
+# deployment of reverseproxy pods with the label: labels.service.reverseproxy
+# The targetPort of 8080 should be the containerPort of the reverseproxy containers that 
+# are selected by 'selector.service.reverseproxy'.  
+# Any pod with the label 
+# 'labels.service.reverseproxy will be targeted by the service; 
+# One service/reverseproxy IP:8080 will be the cluster address
+# of all labels.service.reverseproxy pods, from any deployment

@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata: 
+  name: reverseproxy-service
+  labels:
+    service: reverseproxy
+spec:
+  selector:
+    service: reverseproxy
+  type: NodePort
+  ports:
+  - name: "8080"
+    nodePort: 32000   # the exposed port
+    port: 8080        # the port of the service inside the node
+    targetPort: 8080  # the target port inside the pod
+  
