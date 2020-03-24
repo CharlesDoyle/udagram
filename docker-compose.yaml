@@ -21,7 +21,7 @@ services:
       AWS_PROFILE: $AWS_PROFILE 
       AWS_BUCKET: $AWS_BUCKET
       JWT_SECRET: $JWT_SECRET
-      URL: "http://localhost:8100"  #  the url of the frontend
+      URL: "http://localhost:8100"  # used in a CORS policy to the server
   backend-feed:
     image: char2pie/udacity-restapi-feed
     volumes:

@@ -14,10 +14,72 @@ spec:
       labels:
         service: backend-user
     spec:
+      restartPolicy: Always
       containers:
       - image: char2pie/udacity-restapi-user
         name: backend-user
-        imagePullPolicy: Always          
+        imagePullPolicy: Always  
+        env:
+        - name: PORT 
+          valueFrom:
+            configMapKeyRef:
+              name: env-config
+              key: port
+        - name: URL
+          valueFrom:
+            configMapKeyRef:
+              name: env-config
+              key: URL
+        - name: AWS_BUCKET
+          valueFrom:
+            configMapKeyRef:
+              name: env-config
+              key: AWS_BUCKET
+        - name: AWS_REGION
+          valueFrom:
+            configMapKeyRef:
+              name: env-config
+              key: AWS_REGION
+        - name: POSTGRESS_DB
+          valueFrom:
+            configMapKeyRef:
+              name: env-config
+              key: POSTGRESS_DB
+        - name: POSTGRESS_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: env-config
+              key: POSTGRESS_HOST
+        - name: POSTGRESS_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: env-secret
+              key: postgress_password
+        - name: POSTGRESS_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: env-secret
+              key: postgress_username    
+        - name: JWT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: env-secret
+              key: jwt_secret
+        - name: AWS_PROFILE
+          valueFrom:
+            secretKeyRef:
+              name: aws-secret
+              key: aws_profile 
+        - name: AWS_ACCESS_KEY_ID
+          valueFrom:
+            secretKeyRef:
+              name: aws-secret
+              key: aws_access_key_id
+        - name: AWS_SECRET_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: aws-secret
+              key: aws_secret_access_key        
         resources:
           requests:
             memory: "64Mi"
@@ -27,4 +89,4 @@ spec:
             cpu: "500m"       
         ports:
         - containerPort: 8080
-      restartPolicy: Always
+      

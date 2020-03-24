@@ -10,7 +10,9 @@ spec:
   ports:
     - name: "8100"
       port: 8100    # the service port inside the node (not exposed)
-      targetPort: 80  # the containerPort on the frontend pod, as defined in frontend-deployment.yaml
+      targetPort: 80  
+
+# the containerPort on the frontend pod, as defined in frontend-deployment.yaml
 # This defines a ClusterIP service (because ClusterIP is the default service; 
 # I don't have to indicate a service type)
 # This service gives the frontend deployment a ClusterIP service where service/frontend is the DNS

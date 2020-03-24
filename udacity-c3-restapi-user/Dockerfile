@@ -18,7 +18,7 @@ RUN npm ci
 # This copies the whole app code to the image, so a container will have only this file tree in it.
 COPY . .
 
-# declare the port that the app runs on
+# declare the port that the container runs on
 EXPOSE 8080
 
 # Define the command that runs our app inside our container
