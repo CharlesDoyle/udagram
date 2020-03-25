@@ -16,7 +16,7 @@ spec:
     spec:
       restartPolicy: Always
       containers:
-      - image: char2pie/udacity-restapi-user
+      - image: char2pie/udacity-restapi-user:all_origin
         name: backend-user
         imagePullPolicy: Always  
         env:

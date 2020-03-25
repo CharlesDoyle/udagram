@@ -16,7 +16,7 @@ spec:
     spec:
       restartPolicy: Always 
       containers:
-      - image: char2pie/udacity-restapi-feed
+      - image: char2pie/udagram-restapi-feed
         name: backend-feed
         imagePullPolicy: Always
         env:
