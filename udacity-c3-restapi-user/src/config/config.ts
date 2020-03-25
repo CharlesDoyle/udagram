@@ -8,7 +8,7 @@ export const config = {
     "aws_reigion": process.env.AWS_REGION,
     "aws_profile": process.env.AWS_PROFILE,
     "aws_media_bucket": process.env.AWS_BUCKET,
-    "url": process.env.URL,
+    "allow_origin_url": process.env.ALLOW_ORIGIN_URL,
     "aws_access_key_id": process.env.AWS_ACCESS_KEY_ID,
     "aws_secret_access_key": process.env.AWS_SECRET_ACCESS_KEY,
     "port": process.env.PORT
