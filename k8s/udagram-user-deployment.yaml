@@ -2,25 +2,25 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    service: backend-feed
-  name: backend-feed
+    service: backend-user
+  name: backend-user
 spec:
   selector:
     matchLabels:
-      service: backend-feed
+      service: backend-user
   replicas: 1
   template:
     metadata:
       labels:
-        service: backend-feed
+        service: backend-user
     spec:
-      restartPolicy: Always 
+      restartPolicy: Always
       containers:
-      - image: char2pie/udagram-restapi-feed
-        name: backend-feed
-        imagePullPolicy: Always
+      - image: char2pie/udacity-restapi-user:all_origin
+        name: backend-user
+        imagePullPolicy: Always  
         env:
-        - name: PORT
+        - name: PORT 
           valueFrom:
             configMapKeyRef:
               name: env-config
@@ -30,6 +30,11 @@ spec:
             configMapKeyRef:
               name: env-config
               key: URL
+        - name: ALLOW_ORIGIN_URL
+          valueFrom:
+            configMapKeyRef:
+              name: env-config
+              key: allow_origin_url
         - name: AWS_BUCKET
           valueFrom:
             configMapKeyRef:
@@ -79,14 +84,14 @@ spec:
           valueFrom:
             secretKeyRef:
               name: aws-secret
-              key: aws_secret_access_key
-        ports:
-        - containerPort: 8080 
+              key: aws_secret_access_key        
         resources:
           requests:
             memory: "64Mi"
             cpu: "250m"
           limits:
             memory: "1024Mi"
-            cpu: "500m"
-        
+            cpu: "500m"       
+        ports:
+        - containerPort: 8080
+      

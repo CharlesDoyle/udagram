@@ -15,7 +15,7 @@ spec:
         service: reverseproxy
     spec:
       containers:
-      - image: char2pie/reverseproxy
+      - image: char2pie/reverseproxy:no_added_header
         name: reverseproxy
         imagePullPolicy: Always          
         resources:
