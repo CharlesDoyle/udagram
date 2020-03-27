@@ -7,11 +7,11 @@ services:
   backend_user:
     build:
       context: udacity-c3-restapi-user
-    image: char2pie/udacity-restapi-user
+    image: char2pie/udagram-restapi-user
   backend_feed:
     build:
       context: udacity-c3-restapi-feed  
-    image: char2pie/udacity-restapi-feed
+    image: char2pie/udagram-restapi-feed
   frontend:
     build:
       context: udacity-c3-frontend  
