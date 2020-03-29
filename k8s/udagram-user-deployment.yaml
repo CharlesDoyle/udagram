@@ -8,7 +8,12 @@ spec:
   selector:
     matchLabels:
       service: backend-user
-  replicas: 1
+  replicas: 2
+  strategy:
+    type: RollingUpdate # RollingUpdate is default
+      rollingUpdate:
+        maxSurge: 1     # allow 1 extra replica during the update
+        maxUnavailable: 0  # don't allow less than 1 replica
   template:
     metadata:
       labels:

@@ -2,30 +2,30 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    service: backend-feed
-  name: backend-feed
+    service: backend-user
+  name: backend-user
 spec:
   selector:
     matchLabels:
-      service: backend-feed
-  replicas: 3
+      service: backend-user
+  replicas: 2
   strategy:
-    type: RollingUpdate
-      rollingUpdate:
-        maxSurge: 1     # allow 1 extra replica during the update
-        maxUnavailable: 0  # don't allow less than 1 replica
+    type: RollingUpdate  # RollingUpdate is default
+    rollingUpdate:
+      maxSurge: 1        # allow 1 extra replica during the update
+      maxUnavailable: 0  # don't allow less than 1 replica
   template:
     metadata:
       labels:
-        service: backend-feed
+        service: backend-user
     spec:
-      restartPolicy: Always 
+      restartPolicy: Always
       containers:
-      - image: char2pie/udagram-restapi-feed
-        name: backend-feed
-        imagePullPolicy: Always
+      - image: char2pie/udacity-restapi-user:all_origin
+        name: backend-user
+        imagePullPolicy: Always  
         env:
-        - name: PORT
+        - name: PORT 
           valueFrom:
             configMapKeyRef:
               name: env-config
@@ -89,14 +89,14 @@ spec:
           valueFrom:
             secretKeyRef:
               name: aws-secret
-              key: aws_secret_access_key
-        ports:
-        - containerPort: 8080 
+              key: aws_secret_access_key        
         resources:
           requests:
             memory: "64Mi"
             cpu: "250m"
           limits:
             memory: "1024Mi"
-            cpu: "500m"
-        
+            cpu: "500m"       
+        ports:
+        - containerPort: 8080
+      

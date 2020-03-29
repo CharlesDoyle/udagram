@@ -19,3 +19,10 @@ install:
   - echo "Hello World!"
   - docker-compose -f ./docker-compose-build.yaml build --parallel
 
+# this is a Travis CI config file for an exercise in using Travis to build 
+# the 4 images.  As long as the docker-compose.build.yaml file refers to 
+# the source code of the apps (with the context field), 
+# in the directory tree structure as it appears on the GitHub udagram repo, 
+# then the images can be built.  
+# My repo has all node_modules dependencies and source code for the app, so 
+# the images can be built.

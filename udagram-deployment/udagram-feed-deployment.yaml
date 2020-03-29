@@ -11,9 +11,9 @@ spec:
   replicas: 3
   strategy:
     type: RollingUpdate
-      rollingUpdate:
-        maxSurge: 1     # allow 1 extra replica during the update
-        maxUnavailable: 0  # don't allow less than 1 replica
+    rollingUpdate:
+      maxSurge: 1     # allow 1 extra replica during the update
+      maxUnavailable: 0  # don't allow less than 1 replica
   template:
     metadata:
       labels:
