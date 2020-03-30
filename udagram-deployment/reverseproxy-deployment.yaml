@@ -15,16 +15,16 @@ spec:
         service: reverseproxy
     spec:
       containers:
-      - image: char2pie/reverseproxy:no_added_header
+      - image: char2pie/reverseproxy:v1
         name: reverseproxy
         imagePullPolicy: Always          
         resources:
           requests:
             memory: "64Mi"
-            cpu: "250m"
+            cpu: "200m"
           limits:
             memory: "1024Mi"
-            cpu: "500m"       
+            cpu: "400m"       
         ports:
         - containerPort: 8080
       restartPolicy: Always

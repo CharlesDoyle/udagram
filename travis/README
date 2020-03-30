@@ -1,0 +1,11 @@
+This travis folder is for extra .travis.yml files that I want to stash
+away from being directly in the udagram/ directory.  The .travis.yml file 
+in the udagram/.travis.yml path gets run by Travis if it is in a master-branch
+commit.  Some reasons one may want to stash a .travis.yml file in here are
+to preserve a different .travis.yml file that could be used later, or to 
+keep the currently-used .travis.yml file out of udagram/ directory, so it
+doesn't trigger a Travis build on a commit.
+Stash extra .travis.yml files in this travis/ directory, and rename them
+to something like .travis1.yml and .travis2.yml if there is more than one.  
+To use a .travis.yml file, move it to udagram/.travis.yml (and put a file
+not being used in this travis/ directory).

@@ -178,7 +178,7 @@ spec:
             secretKeyRef:
               key: aws_secret_access_key
               name: aws-secret
-        image: char2pie/udagram-restapi-feed
+        image: char2pie/udagram-restapi-feed:v1.1
         imagePullPolicy: Always
         name: backend-feed
         ports:
@@ -281,7 +281,7 @@ spec:
             secretKeyRef:
               key: aws_secret_access_key
               name: aws-secret
-        image: char2pie/udagram-restapi-user:v1
+        image: char2pie/udagram-restapi-user:v1.1
         imagePullPolicy: Always
         name: backend-user
         ports:
@@ -312,7 +312,7 @@ spec:
         service: frontend
     spec:
       containers:
-      - image: char2pie/udacity-frontend
+      - image: char2pie/udagram-frontend
         imagePullPolicy: Always
         name: frontend
         ports:
@@ -343,7 +343,7 @@ spec:
         service: reverseproxy
     spec:
       containers:
-      - image: char2pie/reverseproxy:no_added_header
+      - image: char2pie/reverseproxy:v1
         imagePullPolicy: Always
         name: reverseproxy
         ports:

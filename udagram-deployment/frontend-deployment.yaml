@@ -15,16 +15,16 @@ spec:
         service: frontend
     spec:
       containers:
-      - image: char2pie/udacity-frontend
+      - image: char2pie/udagram-frontend
         name: frontend
         imagePullPolicy: Always          
         resources:
           requests:
             memory: "64Mi"
-            cpu: "250m"
+            cpu: "200m"
           limits:
-            memory: "1024Mi"
-            cpu: "500m"       
+            memory: "128Mi"
+            cpu: "400m"       
         ports:
         - containerPort: 80
       restartPolicy: Always
