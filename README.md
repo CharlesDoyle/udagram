@@ -24,7 +24,15 @@ To set up the app:
     $ docker build -t char2pie/image-name .
 * The udagram-app.yaml file has all deployment settings.  It is a concatenation
   of all configurations for the deployments, services, configMap, secrets.
+<<<<<<< HEAD
   Edit this file to change the number of replicaSets per deployment, the image for a container, environment variables in a deployment, the names and labels of Kubernetes objects, and any settings on the services, configMap, or secrets.  
+=======
+  
+  udagram-app.yaml is built by running 'kubectl kustomization' on the udagram-deployment directory, which has all the individual Kubernetes configuration .yaml files:
+    udagram$ kubectl kustomization ./udagram_deployment > ./udagram_app.yaml
+  
+  Edit udagram-app.yaml to change the number of replicaSets per deployment, the image for a container, environment variables in a deployment, the names and labels of Kubernetes objects, and any settings on the services, configMap, or secrets.  
+>>>>>>> dev
 
 To deploy the app to an AWS cluster:
 * First, create the cluster:
