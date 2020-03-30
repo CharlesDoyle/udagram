@@ -4,9 +4,9 @@ Access-Control-Allow-Origin variable.  This allows any address to come
 in from the reverseproxy server. 
 
 To run the app on an AWS cluster:
-First, create the cluster:
-udagram$ kops create cluster --node-count=1 --node-size=t2.medium --zones=us-west-2a
-udagram$ kops update cluster --name $KOPS_CLUSTER_NAME} --yes
+* First, create the cluster:
+  udagram$ kops create cluster --node-count=1 --node-size=t2.medium --zones=us-west-2a
+  udagram$ kops update cluster --name $KOPS_CLUSTER_NAME} --yes
 
-Second, start the app on the worker nodes:
-udagram$ kubectl apply -f udagram-app.yaml
+* Second, start the app on the worker nodes:
+  udagram$ kubectl apply -f udagram-app.yaml
