@@ -1,0 +1,15 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+- aws-secret.yaml
+- env-secret.yaml
+- env-configmap.yaml
+- frontend-deployment.yaml
+- reverseproxy-deployment.yaml
+- udagram-feed-deployment.yaml
+- udagram-user-deployment.yaml
+- feed-service.yaml
+- user-service.yaml
+- reverseproxy-svc.yaml
+- frontend-svc.yaml

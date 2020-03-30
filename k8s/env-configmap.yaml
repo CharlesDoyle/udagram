@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: env-config
+data:
+  POSTGRESS_HOST: charliedb1.cwmm1cptaa94.us-east-1.rds.amazonaws.com
+  POSTGRESS_DB: charliedb1
+  AWS_BUCKET: s3-charlie-udagram-dev
+  AWS_REGION: us-west-2
+  DB_DIALECT: postgres
+  URL: http://localhost:8100
+  allow_origin_url: '*'
+  port: '8080'
+#  The non-secret environment variables
+# These are the key:value pairs of the configmap.  
+# The environment variable is the template.spec.containers.image[].env.name[] in a deployment.yaml
+# the key is under name[] at: env.name[].valueFrom.configMapRefKey.key
+# Here's how I am defining these environment variables and using them in a k8s pod:
+# * Define an environment variable on your machine in ~/.profile (for when your app is not in k8s)
+# * Also define the environment variable in your deployment.yaml and a ConfigMap so you can take 
+#   your environment variables with you into any cluster.
+#   * the deployment.yaml file defines an env (environment variable) with a variable name and a
+#     a configMapKeyRef.name and configMapKeyRef.key that is the key that maps to the value in the 
+#     named configmap.
+#   * the configMap.yaml file defines the key:value pair (not the name of the environment variable)
+# * Using an environment variable in your program is the same whether it is defined in ~/.profile or 
+#   in a ConfigMap and deployment.yaml.  You use 'process.env.NAME_ENV', where the name is defined in the
+#   deployment.yaml

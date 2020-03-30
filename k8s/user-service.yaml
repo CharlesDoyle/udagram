@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata: 
+  name: backend-user  # service/backend-user is the cluster DNS with an IP address
+  labels:
+    service: backend-user
+spec:
+  selector:
+    service: backend-user  # a service for all pods that have this label
+  ports:
+  - name: "8080"
+    port: 8080
+    targetPort: 8080
+# A ClusterIP service (not explicitly named a ClusterIP because it's the default service type)
+# The Cluster IP address will be IP:8080 for any labels.service.backend-user deployment

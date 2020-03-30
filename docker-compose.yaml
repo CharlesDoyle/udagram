@@ -9,7 +9,7 @@ services:
         - backend-user
         - backend-feed     
   backend-user:
-    image: char2pie/udacity-restapi-user
+    image: char2pie/udagram-restapi-user:v1
     volumes:
       - $HOME/.aws:/root/.aws
     environment:
@@ -21,9 +21,9 @@ services:
       AWS_PROFILE: $AWS_PROFILE 
       AWS_BUCKET: $AWS_BUCKET
       JWT_SECRET: $JWT_SECRET
-      URL: "http://localhost:8100"  #  the url of the frontend
+      URL: "http://localhost:8100"  # used in a CORS policy to the server
   backend-feed:
-    image: char2pie/udacity-restapi-feed
+    image: char2pie/udagram-restapi-feed
     volumes:
       - $HOME/.aws:/root/.aws
     environment:

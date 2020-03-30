@@ -8,7 +8,9 @@ export const environment = {
   apiHost: 'http://localhost:8080/api/v0'
 };
 
-/*
+/* apiHost is the address of the reverseproxy, which is in front of the backend servers.
+ * When working locally, the apiHost is 'http://localhost:8080/api/v0'
+ 
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
  *

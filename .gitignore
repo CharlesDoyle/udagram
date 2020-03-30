@@ -5,4 +5,6 @@ udacity-c3-restapi-feed/node_modules
 udacity-c3-restapi-user/node_modules
 udacity-c3-restapi-feed/package-lock.json
 udacity-c3-restapi-user/package-lock.json
-
+k8s/.terraform
+k8s/terraform.tfstate.backup
+k8s/tf.json

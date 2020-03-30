@@ -3,8 +3,12 @@ import { config } from './config/config';
 
 const c = config.dev;
 
-//Configure AWS
-var credentials = new AWS.SharedIniFileCredentials({profile: 'default'});
+// Configure AWS
+// SharedIniFileCredentials() looks in ~/.aws/credentials for the profile's key:value pairs
+//var credentials = new AWS.SharedIniFileCredentials({profile: 'charlie_udagram_dev'});
+// AWS.Credentials() is a parent class of SharedIniFileCredentials
+const creds = {accessKeyId: c.aws_access_key_id, secretAccessKey: c.aws_secret_access_key};
+var credentials = new AWS.Credentials(creds);
 AWS.config.credentials = credentials;
 
 export const s3 = new AWS.S3({

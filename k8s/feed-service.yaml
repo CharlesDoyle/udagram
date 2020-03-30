@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata: 
+  name: backend-feed
+  labels:
+    service: backend-feed  # service/backend-feed is the cluster DNS with an IP address
+spec:
+  ports:
+  - name: "8080"
+    port: 8080
+    targetPort: 8080
+  selector:
+    service: backend-feed
+# a ClusterIP service, which is one service IP:port 
+# for any backend-feed deployment with the label: labels.service.backend-feed
+# a ClusterIP service does not expose a public IP; 
+# the service IP is internal to the worker node.
