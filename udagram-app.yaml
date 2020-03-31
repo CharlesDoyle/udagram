@@ -178,7 +178,7 @@ spec:
             secretKeyRef:
               key: aws_secret_access_key
               name: aws-secret
-        image: char2pie/udagram-restapi-feed:v1.1
+        image: char2pie/udagram-restapi-feed:v1.2
         imagePullPolicy: Always
         name: backend-feed
         ports:
@@ -356,3 +356,6 @@ spec:
             cpu: 50m
             memory: 64Mi
       restartPolicy: Always
+
+# This file is made by running 
+# udagram$ kubectl kustomize ./udagram_deployment > ./udagram_app.yaml'
